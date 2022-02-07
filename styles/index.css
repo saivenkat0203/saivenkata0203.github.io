@@ -1,0 +1,80 @@
+.title {
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.tables-list {
+    width: 20vw;
+    height: max-content;
+    border: 2px solid black;
+}
+
+.menu {
+    width: 70vw;
+    height: max-content;
+    border: 2px solid black;
+}
+
+#search1, #search2{
+    border: 2px solid black;
+    margin: 5px;
+    width: 90%;
+    box-shadow: 3px 3px 1px gray;
+    justify-content: center;
+}
+
+.table {
+    padding: 5px;
+    border: 1px solid gray;
+    margin: 5px;
+    box-shadow: 3px 3px 1px gray;
+    visibility: visible;
+}
+
+.table :hover, .table :focus {
+    cursor: pointer;
+}
+
+.item {
+    padding: 5px;
+    border: 1px solid gray;
+    margin: 5px;
+    box-shadow: 3px 3px 1px gray;
+}
+
+.table-details {
+    display: none;
+    position: fixed;
+    z-index: 1; 
+    margin: 0;
+    top: 30%;
+    left: 30%;
+    
+    overflow: auto;
+    background-color: white;
+    border: 2px solid black;
+}
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.close:hover, .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#orders-table, th, td {
+    border: 2px solid black;
+}

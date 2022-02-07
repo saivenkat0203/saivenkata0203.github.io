@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zemoso Labs</title>
+
+    <link rel="stylesheet" href="./styles/index.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <h1 class="title">ZEMOSO LABS RESTAURANT</h1>
+
+    <div class="container">
+
+        <div class="tables-list">
+            <h2 class="title">Tables</h2>
+
+            <input type="text" id="search1" placeholder="Search Table" onkeyup="searchTables()">
+
+            <div class="table" id="1-table" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="viewTable(event)">
+                <h3 class="table-name">Table-1</h3>
+                <h5 class="total-items">Total Items: 0</h5> 
+                <h5 class="total-price">Total Price: 0</h5>
+            </div>
+
+            <div class="table" id="2-table" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="viewTable(event)">
+                <h3 class="table-name">Table-2</h3>
+                <h5 class="total-items">Total Items: 0</h5> 
+                <h5 class="total-price">Total Price: 0</h5>
+            </div>
+
+            <div class="table" id="3-table" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="viewTable(event)">
+                <h3 class="table-name">Table-3</h3>
+                <h5 class="total-items">Total Items: 0</h5> 
+                <h5 class="total-price">Total Price: 0</h5>
+            </div>
+
+            <div class="table" id="4-table" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="viewTable(event)">
+                <h3 class="table-name">Table-4</h3>
+                <h5 class="total-items">Total Items: 0</h5> 
+                <h5 class="total-price">Total Price: 0</h5>
+            </div>
+        </div>
+    
+        <div class="menu">
+            <h2 class="title">Menu</h2>
+
+            <input type="text" id="search2" placeholder="Search Menu" onkeyup="searchMenu()">
+            
+            <div class="item" id="item1" draggable="true" ondragstart="drag(event)">
+                <h3 class="name">Hyderabad Chicken Biryani</h3>
+                <h5 class="price" value="275">275/-</h5>
+            </div>
+
+            <div class="item" id="item2" draggable="true" ondragstart="drag(event)">
+                <h3 class="name">Mutton Biryani</h3>
+                <h5 class="price" value="275">275/-</h5>
+            </div>
+
+            <div class="item" id="item3" draggable="true" ondragstart="drag(event)">
+                <h3 class="name">Keema Biryani</h3>
+                <h5 class="price" value="275">275/-</h5>
+            </div>
+
+            <div class="item" id="item4" draggable="true" ondragstart="drag(event)">
+                <h3 class="name">Makhni Paneer Biryani</h3>
+                <h5 class="price" value="275">275/-</h5>
+            </div>
+
+            <div class="item" id="item5" draggable="true" ondragstart="drag(event)">
+                <h3 class="name">Calicut Chicken Biryani</h3>
+                <h5 class="price" value="275">275/-</h5>
+            </div>
+
+            <div class="item" id="item6" draggable="true" ondragstart="drag(event)">
+                <h3 class="name">Fish Biryani</h3>
+                <h5 class="price" value="275">275/-</h5>
+            </div>
+
+            <div class="item" id="item7" draggable="true" ondragstart="drag(event)">
+                <h3 class="name">Mixed Non-Veg Biryani</h3>
+                <h5 class="price" value="275">275/-</h5>
+            </div>
+
+            <div class="item" id="item8" draggable="true" ondragstart="drag(event)">
+                <h3 class="name">Egg Biryani</h3>
+                <h5 class="price" value="275">275/-</h5>
+            </div>
+        </div>
+    </div>
+    
+    <div class="table-details">
+        <span class="close" onclick="closeTable(event)">&times;</span>
+        <strong>Table - <span id="table-id"></span> | Order Details</strong>
+
+        <br><br><br>
+        <div class="orders">
+            <table id="orders-table">
+                <thead>
+                    <tr>
+                        <th>S.No.</th>
+                        <th>Item</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+
+                <tbody id="main-orders">
+                    
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <td colspan="4" class="totalPrice-tableView"></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <script src="./scripts/index.js"></script>
+</body>
+</html>
