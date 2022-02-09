@@ -133,6 +133,9 @@ h3.price {
     margin-left: 5%;
     border: 3px solid black;
     padding: 2px;
+    height: 2em;
+    box-shadow: 3px 3px 1px gray;
+    font-size: 0.9em;
 }
 
 #bill {
@@ -141,6 +144,9 @@ h3.price {
     margin: 1em;
 }
 
+.DTOrder, #done {
+    display: none;
+}
 
 @media screen and (max-width: 900px) {
     .container {

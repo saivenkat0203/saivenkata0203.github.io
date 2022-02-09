@@ -19,6 +19,8 @@ let totalItemsOfTables = {
     4: 0
 };
 
+let bills = [];
+
 table_popup = document.getElementsByClassName("table-details")[0];
 
 window.onload = printPricesAndItems();
@@ -102,8 +104,6 @@ function addItemToTable(ev, data) {
         parentOfThisElement = ev.target;
     }
 
-    console.log(parentOfThisElement.id);
-
     let tableId = parentOfThisElement.id[0];
     
     totalItemsOfTables[tableId] += 1;
@@ -122,12 +122,10 @@ function addItemToTable(ev, data) {
     if(!found) {
         orders[tableId].push({name, price, quantity: 1});
     }
-
-    console.log(orders);
 }
 
 function viewTable(event) {
-
+    document.getElementsByClassName("DTOrder")[0].style.display = "none";
     items = document.getElementsByClassName("item");
 
     for(let i = 0; i < items.length; i++) {
@@ -159,10 +157,15 @@ function computeTable(table_id) {
 
     tbodyRef.innerHTML = "";
     
+    let k = 0;    
     for(let i = 0; i < orders[table_id].length; i++) {
+        if(orders[table_id][i]["quantity"] == 0){
+            continue;
+        }
         let newRow = tbodyRef.insertRow();
         let newCol = newRow.insertCell();
-        newCol.append(i+1);
+        newCol.append(k+1);
+        k++;
 
         newCol = newRow.insertCell();
         newText = document.createTextNode(orders[table_id][i]["name"]);
@@ -189,16 +192,12 @@ function computeTable(table_id) {
             
                 for(let i = 0; i < newInputs.length; i++) {
                     if(newInputs[i].value != orders[table_id][i]["quantity"]) {
-                        console.log("changed");
                         let change = newInputs[i].value - orders[table_id][i]["quantity"];
                         orders[table_id][i]["quantity"] = newInputs[i].value;
-                        console.log(change);
                         
                         totalItemsOfTables[table_id] += change;
-                        console.log(totalItemsOfTables[table_id]);
 
                         totalPriceOfTables[table_id] += (change * orders[table_id][i]["price"]);
-                        console.log(totalPriceOfTables[table_id]);
 
                         printPricesAndItems();
 
@@ -209,41 +208,37 @@ function computeTable(table_id) {
 
         newCol = newRow.insertCell();
         let removeButton = document.createElement("button");
-        /*removeButton.type = "button";
-        removeButton.name = "removeItem";*/
         removeButton.id = "removeItem";
         
         let bin = document.createElement("i");
         bin.className = "fa fa-trash";
         removeButton.appendChild(bin);
 
-        console.log(bin);
         removeButton.style.width = "100%";
         newCol.appendChild(removeButton);
 
         removeButton.onclick = function() {
-            console.log(newRow);
-            console.log(name);
-
-            /*
-            console.log(orders[table_id]);
-            console.log(orders[table_id][i]);
-            console.log(typeof orders[table_id]);
-            console.log(typeof orders[table_id][i]);
-
-            console.log(orders[table_id].length);
-            */
+            let k;
 
             for(let j = 0; j < orders[table_id].length; j++) {
                 if(orders[table_id][j]["name"] == name) {
-                    console.log("same");
-                    /*delete orders[table_id][j];*/
+                    k = j;
                 }
             }
-            
+            deleteItemFromTable(table_id, k);
         }
     }
     computeTotalPrice(table_id);
+    printPricesAndItems();
+}
+
+function deleteItemFromTable(table_id, k) {
+    let q = orders[table_id][k]["quantity"];
+    orders[table_id][k]["quantity"] = 0;
+    totalPriceOfTables[table_id] -= q * orders[table_id][k]["price"];
+    totalItemsOfTables[table_id] -= q;
+
+    computeTable(table_id);
 }
 
 function closeTable(event) {
@@ -263,13 +258,11 @@ function computeTotalPrice(table_id) {
 
 function filterItems() {
     let dropDownValue = document.getElementById("course-type").value;
-    console.log(dropDownValue);
 
     let items = document.getElementsByClassName("item");
 
     if(dropDownValue.toLowerCase() === "select") {
         for(let i = 0; i < items.length; i++) {
-            console.log(items[i]);
             items[i].style.removeProperty("display");
         }
     }
@@ -285,5 +278,60 @@ function filterItems() {
                 items[i].style.display = "none";
             }
         }
+    }
+}
+
+function generateBill() {
+    let bill = document.getElementsByClassName("DTOrder")[0];
+    bill.style.display = "block";
+
+    let currentdate = new Date(); 
+    let datetime = "Date: " + currentdate.getDate() + "/" + (currentdate.getMonth()+1)  + "/" + currentdate.getFullYear() + 
+                   " Time:" + currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
+
+    document.getElementById("dateTime").innerHTML = datetime;
+}
+
+function confirmBill(event) {
+    let idOfTable = document.getElementById("table-id").innerText;
+
+    if(event.target.value == "Yes") {
+        let items = [];
+        let totalPrice;
+        let totalItems;
+        let dateOfOrder;
+        let timeOfOrder;
+        for(let i = 0; i < orders[idOfTable].length; i++) {
+            if(orders[idOfTable][i]["quantity"] > 0) {
+                let name = orders[idOfTable][i]["name"];
+                let itemPrice = orders[idOfTable][i]["price"];
+                let quantity = orders[idOfTable][i]["quantity"];
+                let price = itemPrice * quantity;
+
+                totalPrice = totalPriceOfTables[idOfTable];
+                totalItems = totalItemsOfTables[idOfTable];
+
+                let currentdate = new Date(); 
+                dateOfOrder = currentdate.getDate() + "/" + (currentdate.getMonth()+1)  + "/" + currentdate.getFullYear();
+                timeOfOrder = currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
+
+                items.push({name, itemPrice, quantity, price});
+            }
+        }
+        bills.push({idOfTable, dateOfOrder, timeOfOrder, totalItems, totalPrice, items});
+
+        document.getElementsByClassName("DTOrder")[0].style.display = "none";
+        
+        document.getElementById("done").style.display = "block";
+
+        orders[idOfTable] = [];
+        totalItemsOfTables[idOfTable] = 0;
+        totalPriceOfTables[idOfTable] = 0;
+
+        printPricesAndItems();
+    }
+
+    else {
+        document.getElementsByClassName("DTOrder")[0].style.display = "none";
     }
 }

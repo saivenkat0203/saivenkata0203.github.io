@@ -125,8 +125,7 @@
                         </tr>
                     </thead>
 
-                    <tbody id="main-orders">
-                        
+                    <tbody id="main-orders">  
                     </tbody>
 
                     <tfoot>
@@ -138,6 +137,18 @@
             </div>
 
             <input type="button" value="Generate Bill" id="bill" onclick="generateBill()">
+
+            <section class="DTOrder">
+                <strong>
+                    <span id="dateTime"></span>
+                </strong>
+
+                <h3>Are you sure?</h3>
+                <input type="button" value="Yes" onclick="confirmBill(event)">
+                <input type="button" value="No" onclick="confirmBill(event)">
+            </section>
+
+            <h3 id="done">Bill is generated!</h3>
         </div> 
     </div>
 
