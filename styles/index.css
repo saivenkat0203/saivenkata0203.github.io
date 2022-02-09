@@ -13,19 +13,21 @@
 
 .tables-list {
     width: 20vw;
-    height: max-content;
+    height: 85vh;
     border: 4px solid black;
     padding: 10px;
     text-align: center;
+    overflow: auto;
 }
 
 .menu {
     width: 70vw;
-    height: max-content;
+    height: 85vh;
     border: 4px solid black;
     margin-left: 1em;
     padding: 10px;
     text-align: center;
+    overflow: auto;
 }
 
 #search1 {
@@ -124,7 +126,7 @@ h3.name {
     padding-left: 2%;
 }
 
-h3.price {
+h3.course, h3.price {
     padding-right: 2%;
     float: right;
 }
@@ -167,6 +169,42 @@ h3.price {
     }
 
     .table-details {
-        width: 30%;
+        width: 60%;
+        top: 20%;
+        left: 20%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .title {
+        font-size: 20px;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 0;
+        padding: 0;
+        align-items: flex-start;
+    }
+
+    .tables-list {
+        width: 80%;
+        height: 40vh;
+        margin-bottom: 0.5em;
+    }
+
+    .menu {
+        width: 80%;
+        height: 40vh;
+        margin-left: 0;
+        margin-top: 0.5em;
+    }
+
+    .table-details {
+        width: 80%;
+        top: 10%;
+        left: 10%;
     }
 }
