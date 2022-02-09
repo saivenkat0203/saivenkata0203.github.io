@@ -57,8 +57,10 @@ function searchMenu() {
 
     for(let i = 0; i < items.length; i++) {
         let name = items[i].getElementsByClassName("name");
+
+        let course = name[0].id;
     
-        if(name[0].innerHTML.toLowerCase().indexOf(input.toLowerCase()) > -1) {
+        if(name[0].innerHTML.toLowerCase().indexOf(input.toLowerCase()) > -1 || course.toLowerCase().indexOf(input.toLowerCase()) > -1) {
             items[i].style.display = "";
         }
         else {
@@ -178,6 +180,8 @@ function computeTable(table_id) {
         inputTag.id = "quantityNewInput";
         inputTag.value = orders[table_id][i]["quantity"];
         inputTag.min = "1";
+        inputTag.style.width = "90%";
+        
         newCol.appendChild(inputTag);
 
         inputTag.addEventListener("input", function() {
@@ -204,11 +208,17 @@ function computeTable(table_id) {
         });
 
         newCol = newRow.insertCell();
-        let removeButton = document.createElement("input");
-        removeButton.type = "button";
-        removeButton.name = "removeItem";
+        let removeButton = document.createElement("button");
+        /*removeButton.type = "button";
+        removeButton.name = "removeItem";*/
         removeButton.id = "removeItem";
-        removeButton.value = "del";
+        
+        let bin = document.createElement("i");
+        bin.className = "fa fa-trash";
+        removeButton.appendChild(bin);
+
+        console.log(bin);
+        removeButton.style.width = "100%";
         newCol.appendChild(removeButton);
 
         removeButton.onclick = function() {
@@ -249,4 +259,31 @@ function closeTable(event) {
 function computeTotalPrice(table_id) {
     let total = document.getElementsByClassName("totalPrice-tableView")[0];
     total.innerHTML = "Total price: " + totalPriceOfTables[table_id];
+}
+
+function filterItems() {
+    let dropDownValue = document.getElementById("course-type").value;
+    console.log(dropDownValue);
+
+    let items = document.getElementsByClassName("item");
+
+    if(dropDownValue.toLowerCase() === "select") {
+        for(let i = 0; i < items.length; i++) {
+            console.log(items[i]);
+            items[i].style.removeProperty("display");
+        }
+    }
+    else {
+        for(let i = 0; i < items.length; i++) {
+            let name = items[i].getElementsByClassName("name");
+            let course = name[0].id;
+        
+            if(course.toLowerCase().indexOf(dropDownValue.toLowerCase()) > -1) {
+                items[i].style.display = "";
+            }
+            else {
+                items[i].style.display = "none";
+            }
+        }
+    }
 }

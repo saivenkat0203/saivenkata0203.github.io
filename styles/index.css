@@ -1,5 +1,6 @@
 .title {
     text-align: center;
+    color: black;
 }
 
 .container {
@@ -13,29 +14,50 @@
 .tables-list {
     width: 20vw;
     height: max-content;
-    border: 2px solid black;
+    border: 4px solid black;
+    padding: 10px;
+    text-align: center;
 }
 
 .menu {
     width: 70vw;
     height: max-content;
-    border: 2px solid black;
+    border: 4px solid black;
+    margin-left: 1em;
+    padding: 10px;
+    text-align: center;
 }
 
-#search1, #search2{
+#search1 {
     border: 2px solid black;
     margin: 5px;
-    width: 90%;
     box-shadow: 3px 3px 1px gray;
-    justify-content: center;
+    width: 75%;
+    height: 2em;
+    margin-left: 5px;
+    font-size: 0.9em;   
+}
+
+#search2 {
+    border: 2px solid black;
+    margin: 5px;
+    box-shadow: 3px 3px 1px gray;
+    width: 60%;
+    height: 2em;
+    margin-left: 5px;
+    font-size: 0.9em;
+    display: inline-block;
+    
 }
 
 .table {
     padding: 5px;
-    border: 1px solid gray;
+    border: 3px solid black;
     margin: 5px;
     box-shadow: 3px 3px 1px gray;
     visibility: visible;
+    text-align: left;
+    padding-left: 5%;
 }
 
 .table :hover, .table :focus {
@@ -44,9 +66,11 @@
 
 .item {
     padding: 5px;
-    border: 1px solid gray;
+    border: 3px solid black;
     margin: 5px;
     box-shadow: 3px 3px 1px gray;
+    text-align: left;
+    overflow: hidden;
 }
 
 .table-details {
@@ -58,8 +82,24 @@
     left: 30%;
     
     overflow: auto;
-    background-color: white;
     border: 2px solid black;
+    background-color: white;
+    opacity: 100%;
+    width: 40%;
+    height: 40%;
+}
+
+.content {
+    text-align: center;
+    font-size: 1em;
+    padding: 1em;
+}
+
+#orders-table {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 100%;
 }
 
 .close {
@@ -77,4 +117,50 @@
 
 #orders-table, th, td {
     border: 2px solid black;
+}
+
+h3.name {
+    display: inline-block;
+    padding-left: 2%;
+}
+
+h3.price {
+    padding-right: 2%;
+    float: right;
+}
+
+#course-type {
+    margin-left: 5%;
+    border: 3px solid black;
+    padding: 2px;
+}
+
+#bill {
+    width: 30%;
+    border: 2px solid black;
+    margin: 1em;
+}
+
+
+@media screen and (max-width: 900px) {
+    .container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 0;
+        padding: 0;
+        align-items: flex-start;
+    }
+
+    .tables-list {
+        width: 20%;
+    }
+
+    .menu {
+        width: 60%;
+    }
+
+    .table-details {
+        width: 30%;
+    }
 }

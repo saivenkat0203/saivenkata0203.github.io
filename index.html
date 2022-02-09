@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE= edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zemoso Labs</title>
 
     <link rel="stylesheet" href="./styles/index.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <h1 class="title">ZEMOSO LABS RESTAURANT</h1>
@@ -48,76 +49,96 @@
             <h2 class="title">Menu</h2>
 
             <input type="text" id="search2" placeholder="Search Menu" onkeyup="searchMenu()">
+
+            <select name="course-type" id="course-type" onchange="filterItems()">
+                <option value="Select">Select Course Type</option>
+                <option value="Entree">Entree</option>
+                <option value="MainCourse">Main Course</option>
+                <option value="Dessert">Dessert</option>
+                <option value="Appetizer">Appetizer</option>
+            </select>
             
             <div class="item" id="item1" draggable="true" ondragstart="drag(event)">
-                <h3 class="name">Hyderabad Chicken Biryani</h3>
-                <h5 class="price" value="275">275/-</h5>
+                <h3 class="name" id="MainCourse">Hyderabad Chicken Biryani</h3>
+                <h3 class="price" value="275">275/-</h3>
             </div>
 
             <div class="item" id="item2" draggable="true" ondragstart="drag(event)">
-                <h3 class="name">Mutton Biryani</h3>
-                <h5 class="price" value="275">275/-</h5>
+                <h3 class="name" id="MainCourse">Mutton Biryani</h3>
+                <h3 class="price" value="275">275/-</h3>
             </div>
 
             <div class="item" id="item3" draggable="true" ondragstart="drag(event)">
-                <h3 class="name">Keema Biryani</h3>
-                <h5 class="price" value="275">275/-</h5>
+                <h3 class="name" id="entree">Keema Biryani</h3>
+                <h3 class="price" value="275">275/-</h3>
             </div>
 
             <div class="item" id="item4" draggable="true" ondragstart="drag(event)">
-                <h3 class="name">Makhni Paneer Biryani</h3>
-                <h5 class="price" value="275">275/-</h5>
+                <h3 class="name" id="entree">Makhni Paneer Biryani</h3>
+                <h3 class="price" value="275">275/-</h3>
             </div>
 
             <div class="item" id="item5" draggable="true" ondragstart="drag(event)">
-                <h3 class="name">Calicut Chicken Biryani</h3>
-                <h5 class="price" value="275">275/-</h5>
+                <h3 class="name" id="dessert">Calicut Chicken Biryani</h3>
+                <h3 class="price" value="275">275/-</h3>
             </div>
 
             <div class="item" id="item6" draggable="true" ondragstart="drag(event)">
-                <h3 class="name">Fish Biryani</h3>
-                <h5 class="price" value="275">275/-</h5>
+                <h3 class="name" id="dessert">Fish Biryani</h3>
+                <h3 class="price" value="275">275/-</h3>
             </div>
 
             <div class="item" id="item7" draggable="true" ondragstart="drag(event)">
-                <h3 class="name">Mixed Non-Veg Biryani</h3>
-                <h5 class="price" value="275">275/-</h5>
+                <h3 class="name" id="appetizer">Mixed Non-Veg Biryani</h3>
+                <h3 class="price" value="275">275/-</h3>
             </div>
 
             <div class="item" id="item8" draggable="true" ondragstart="drag(event)">
-                <h3 class="name">Egg Biryani</h3>
-                <h5 class="price" value="275">275/-</h5>
+                <h3 class="name" id="appetizer">Egg Biryani</h3>
+                <h3 class="price" value="275">275/-</h3>
             </div>
         </div>
     </div>
     
     <div class="table-details">
-        <span class="close" onclick="closeTable(event)">&times;</span>
-        <strong>Table - <span id="table-id"></span> | Order Details</strong>
+        <div class="content">
+            <span class="close" onclick="closeTable(event)">&times;</span>
+            <strong>Table - <span id="table-id"></span> | Order Details</strong>
 
-        <br><br><br>
-        <div class="orders">
-            <table id="orders-table">
-                <thead>
-                    <tr>
-                        <th>S.No.</th>
-                        <th>Item</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                    </tr>
-                </thead>
+            <br><br><br>
+            <div class="orders">
+                <table id="orders-table">
+                    <colgroup>
+                        <col span="1" style="width: 10%">
+                        <col span="1" style="width: 40%">
+                        <col span="1" style="width: 20%">
+                        <col span="1" style="width: 10%">
+                        <col span="1" style="width: 10%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>S.No.</th>
+                            <th>Item</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
 
-                <tbody id="main-orders">
-                    
-                </tbody>
+                    <tbody id="main-orders">
+                        
+                    </tbody>
 
-                <tfoot>
-                    <tr>
-                        <td colspan="4" class="totalPrice-tableView"></td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5" class="totalPrice-tableView"></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <input type="button" value="Generate Bill" id="bill" onclick="generateBill()">
+        </div> 
     </div>
 
     <script src="./scripts/index.js"></script>
