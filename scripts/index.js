@@ -2,21 +2,24 @@ let orders = {
     1 : [],
     2 : [],
     3 : [],
-    4 : []
+    4 : [],
+    5 : []
 };
 
 let totalPriceOfTables = {
     1: 0,
     2: 0,
     3: 0,
-    4: 0
+    4: 0,
+    5: 0
 };
 
 let totalItemsOfTables = {
     1: 0,
     2: 0,
     3: 0,
-    4: 0
+    4: 0,
+    5: 0
 };
 
 let bills = [];
@@ -241,7 +244,7 @@ function deleteItemFromTable(table_id, k) {
     computeTable(table_id);
 }
 
-function closeTable(event) {
+function closeTable() {
     table_popup.style.display = "none";
 
     items = document.getElementsByClassName("item");
@@ -304,9 +307,8 @@ function confirmBill(event) {
         for(let i = 0; i < orders[idOfTable].length; i++) {
             if(orders[idOfTable][i]["quantity"] > 0) {
                 let name = orders[idOfTable][i]["name"];
-                let itemPrice = orders[idOfTable][i]["price"];
+                let price = orders[idOfTable][i]["price"];
                 let quantity = orders[idOfTable][i]["quantity"];
-                let price = itemPrice * quantity;
 
                 totalPrice = totalPriceOfTables[idOfTable];
                 totalItems = totalItemsOfTables[idOfTable];
@@ -315,23 +317,94 @@ function confirmBill(event) {
                 dateOfOrder = currentdate.getDate() + "/" + (currentdate.getMonth()+1)  + "/" + currentdate.getFullYear();
                 timeOfOrder = currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
 
-                items.push({name, itemPrice, quantity, price});
+                items.push({name, price, quantity});
             }
         }
         bills.push({idOfTable, dateOfOrder, timeOfOrder, totalItems, totalPrice, items});
 
         document.getElementsByClassName("DTOrder")[0].style.display = "none";
-        
         document.getElementById("done").style.display = "block";
+        setTimeout(message ,2000);
 
+        function message() {
+            document.getElementById("done").style.display = "none";
+            closeTable();
+        }
         orders[idOfTable] = [];
         totalItemsOfTables[idOfTable] = 0;
         totalPriceOfTables[idOfTable] = 0;
 
         printPricesAndItems();
+
+
     }
 
     else {
         document.getElementsByClassName("DTOrder")[0].style.display = "none";
     }
+}
+
+function viewBills() {
+    let billsElement = document.getElementsByClassName("bills")[0];
+    console.log(billsElement);
+    billsElement.style.display = "block";
+    billsElement = document.getElementsByClassName("innerBills")[0];
+    
+    let tbodyRef = document.getElementById("main-bills");
+    tbodyRef.innerHTML = "";
+
+    for(let i = 0; i < bills.length; i++) {
+        console.log(bills[i]);
+
+        let date = bills[i]["dateOfOrder"];
+        let time = bills[i]["timeOfOrder"];
+        let id = bills[i]["idOfTable"];
+        let totalItems = bills[i]["totalItems"];
+        let totalPrice = bills[i]["totalPrice"];
+        let items = bills[i]["items"];
+
+        let newRow = tbodyRef.insertRow();
+        let newCol = newRow.insertCell();
+        newCol.append(i+1);
+
+        newCol = newRow.insertCell();
+        newText = document.createTextNode(date);
+        newCol.appendChild(newText);
+
+        newCol = newRow.insertCell();
+        newText = document.createTextNode(time);
+        newCol.appendChild(newText);
+
+        newCol = newRow.insertCell();
+        newText = document.createTextNode(id);
+        newCol.appendChild(newText);
+
+        newCol = newRow.insertCell();
+        newText = document.createTextNode(totalItems);
+        newCol.appendChild(newText);
+
+        newCol = newRow.insertCell();
+        newText = document.createTextNode(totalPrice);
+        newCol.appendChild(newText);
+
+        newCol = newRow.insertCell();
+        console.log(items);
+        let ol = document.createElement("ol");
+        ol.style.textAlign = "left";
+        for(let j = 0; j < items.length; j++) {
+            let li = document.createElement("li");
+            li.id = "li";
+            let text = `${items[j]["name"]} - ${items[j]["price"]} x${items[j]["quantity"]}`;
+            li.appendChild(document.createTextNode(text));
+            ol.appendChild(li);
+        }
+    
+        newCol.appendChild(ol);        
+    }
+    
+}
+
+function closeBill(event) {
+    let billsElement = document.getElementsByClassName("bills")[0];
+    billsElement.style.display = "none";
 }

@@ -1,3 +1,14 @@
+/*-------------------TAGS------------------*/
+h3.name {
+    display: inline-block;
+    padding-left: 2%;
+}
+
+h3.course, h3.price {
+    padding-right: 2%;
+    float: right;
+}
+/*-------------------TITLE AND CONTAINER(tables list & menu)------------------*/
 .title {
     text-align: center;
     color: black;
@@ -10,24 +21,13 @@
     flex-wrap: wrap;
     flex-direction: row;
 }
-
+/*-------------------TABLES-LIST------------------*/
 .tables-list {
     width: 20vw;
-    height: 85vh;
+    height: 87vh;
     border: 4px solid black;
     padding: 10px;
     text-align: center;
-    overflow: auto;
-}
-
-.menu {
-    width: 70vw;
-    height: 85vh;
-    border: 4px solid black;
-    margin-left: 1em;
-    padding: 10px;
-    text-align: center;
-    overflow: auto;
 }
 
 #search1 {
@@ -40,16 +40,9 @@
     font-size: 0.9em;   
 }
 
-#search2 {
-    border: 2px solid black;
-    margin: 5px;
-    box-shadow: 3px 3px 1px gray;
-    width: 60%;
-    height: 2em;
-    margin-left: 5px;
-    font-size: 0.9em;
-    display: inline-block;
-    
+.tables {
+    height: 73vh;
+    overflow: auto;
 }
 
 .table {
@@ -65,6 +58,32 @@
 .table :hover, .table :focus {
     cursor: pointer;
 }
+/*-------------------MENU------------------*/
+.menu {
+    width: 70vw;
+    max-height: 90vh;
+    border: 4px solid black;
+    margin-left: 1em;
+    padding: 10px;
+    text-align: center;
+}
+
+.items-list {
+    height: 73vh;
+    overflow: auto;
+}
+
+#search2 {
+    border: 2px solid black;
+    margin: 5px;
+    box-shadow: 3px 3px 1px gray;
+    width: 60%;
+    height: 2em;
+    margin-left: 5px;
+    font-size: 0.9em;
+    display: inline-block;
+    
+}
 
 .item {
     padding: 5px;
@@ -75,6 +94,15 @@
     overflow: hidden;
 }
 
+#course-type {
+    margin-left: 5%;
+    border: 3px solid black;
+    padding: 2px;
+    height: 2em;
+    box-shadow: 3px 3px 1px gray;
+    font-size: 0.9em;
+}
+/*-------------------TABLE DETAILS------------------*/
 .table-details {
     display: none;
     position: fixed;
@@ -91,7 +119,7 @@
     height: 40%;
 }
 
-.content {
+.content { /*similar to both table details & bill details*/
     text-align: center;
     font-size: 1em;
     padding: 1em;
@@ -102,6 +130,11 @@
     margin-right: auto;
     width: 100%;
     height: 100%;
+    text-align: center;
+}
+
+#orders-table, th, td {
+    border: 2px solid black;
 }
 
 .close {
@@ -117,39 +150,60 @@
     cursor: pointer;
 }
 
-#orders-table, th, td {
-    border: 2px solid black;
-}
-
-h3.name {
-    display: inline-block;
-    padding-left: 2%;
-}
-
-h3.course, h3.price {
-    padding-right: 2%;
-    float: right;
-}
-
-#course-type {
-    margin-left: 5%;
-    border: 3px solid black;
-    padding: 2px;
-    height: 2em;
-    box-shadow: 3px 3px 1px gray;
-    font-size: 0.9em;
-}
-
 #bill {
     width: 30%;
     border: 2px solid black;
     margin: 1em;
+}
+/*-------------------BILL DETAILS------------------*/
+#billButton {
+    margin-left: 2%;
+    border: 3px solid black;
+    padding: 2px;
+    height: 2em;
+    width: 5%;
+    box-shadow: 3px 3px 1px gray;
+    font-size: 0.9em;
+}
+
+#billsHeading {
+    display: inline-block;
+    font-size: 1.5em;
+}
+
+.bills {
+    display: none;
+    position: fixed;
+    z-index: 1; 
+    margin: 0;
+    top: 30%;
+    left: 30%;
+    
+    overflow: auto;
+    border: 2px solid black;
+    background-color: white;
+    opacity: 100%;
+    width: 40%;
+    height: 40%;
+}
+
+#bills-table {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+#bills-table, th, td {
+    border: 2px solid black;
 }
 
 .DTOrder, #done {
     display: none;
 }
 
+/*-------------------SCREEN SIZE------------------*/
 @media screen and (max-width: 900px) {
     .container {
         display: flex;
@@ -172,6 +226,10 @@ h3.course, h3.price {
         width: 60%;
         top: 20%;
         left: 20%;
+    }
+
+    #billButton {
+        width: fit-content;
     }
 }
 

@@ -16,149 +16,163 @@
     <div class="container">
 
         <div class="tables-list">
-            <h2 class="title">Tables</h2>
-
-            <input type="text" id="search1" placeholder="Search Table" onkeyup="searchTables()">
-
-            <div class="table" id="1-table" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="viewTable(event)">
-                <h3 class="table-name">Table-1</h3>
-                <h5 class="total-items">Total Items: 0</h5> 
-                <h5 class="total-price">Total Price: 0</h5>
+            <div class="fixedBar">
+                <h2 class="title">Tables</h2>
+                <input type="text" id="search1" placeholder="Search Table" onkeyup="searchTables()">
             </div>
-
-            <div class="table" id="2-table" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="viewTable(event)">
-                <h3 class="table-name">Table-2</h3>
-                <h5 class="total-items">Total Items: 0</h5> 
-                <h5 class="total-price">Total Price: 0</h5>
-            </div>
-
-            <div class="table" id="3-table" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="viewTable(event)">
-                <h3 class="table-name">Table-3</h3>
-                <h5 class="total-items">Total Items: 0</h5> 
-                <h5 class="total-price">Total Price: 0</h5>
-            </div>
-
-            <div class="table" id="4-table" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="viewTable(event)">
-                <h3 class="table-name">Table-4</h3>
-                <h5 class="total-items">Total Items: 0</h5> 
-                <h5 class="total-price">Total Price: 0</h5>
+    
+            <hr>
+            
+            <div class="tables">
+                <div class="table" id="1-table" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="viewTable(event)">
+                    <h3 class="table-name">Table-1</h3>
+                    <h5 class="total-items">Total Items: 0</h5> 
+                    <h5 class="total-price">Total Price: 0</h5>
+                </div>
+    
+                <div class="table" id="2-table" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="viewTable(event)">
+                    <h3 class="table-name">Table-2</h3>
+                    <h5 class="total-items">Total Items: 0</h5> 
+                    <h5 class="total-price">Total Price: 0</h5>
+                </div>
+    
+                <div class="table" id="3-table" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="viewTable(event)">
+                    <h3 class="table-name">Table-3</h3>
+                    <h5 class="total-items">Total Items: 0</h5> 
+                    <h5 class="total-price">Total Price: 0</h5>
+                </div>
+    
+                <div class="table" id="4-table" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="viewTable(event)">
+                    <h3 class="table-name">Table-4</h3>
+                    <h5 class="total-items">Total Items: 0</h5> 
+                    <h5 class="total-price">Total Price: 0</h5>
+                </div>
+    
+                <div class="table" id="5-table" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="viewTable(event)">
+                    <h3 class="table-name">Table-5</h3>
+                    <h5 class="total-items">Total Items: 0</h5> 
+                    <h5 class="total-price">Total Price: 0</h5>
+                </div>
             </div>
         </div>
     
         <div class="menu">
-            <h2 class="title">Menu</h2>
+            <div class="fixedBar">
+                <h2 class="title">Menu</h2>
 
-            <input type="text" id="search2" placeholder="Search Menu" onkeyup="searchMenu()">
+                <input type="text" id="search2" placeholder="Search Menu" onkeyup="searchMenu()">
 
-            <select name="course-type" id="course-type" onchange="filterItems()">
-                <option value="Select">Select Course Type</option>
-                <option value="Entree">Entree</option>
-                <option value="MainCourse">Main Course</option>
-                <option value="Dessert">Dessert</option>
-                <option value="Appetizer">Appetizer</option>
-                <option value="Beverage">Beverage</option>
-            </select>
-            
-            <div class="item" id="item1" draggable="true" ondragstart="drag(event)">
-                <h3 class="name" id="MainCourse">Hyderabad Chicken Biryani</h3>
-                <h3 class="price" value="275">275/-</h3>
-                <h3 class="course">Main Course</h3>
+                <select name="course-type" id="course-type" onchange="filterItems()">
+                    <option value="Select">Select Course Type</option>
+                    <option value="Entree">Entree</option>
+                    <option value="MainCourse">Main Course</option>
+                    <option value="Dessert">Dessert</option>
+                    <option value="Appetizer">Appetizer</option>
+                    <option value="Beverage">Beverage</option>
+                </select>
+
+                <input type="button" value="Bills" id="billButton" onclick="viewBills()">
             </div>
 
-            <div class="item" id="item2" draggable="true" ondragstart="drag(event)">
-                <h3 class="name" id="MainCourse">Mutton Biryani</h3>
-                <h3 class="price" value="275">275/-</h3>
-                <h3 class="course">Main Course</h3>
-            </div>
+            <hr>
 
-            <div class="item" id="item3" draggable="true" ondragstart="drag(event)">
-                <h3 class="name" id="MainCourse">Keema Biryani</h3>
-                <h3 class="price" value="275">275/-</h3>
-                <h3 class="course">Main Course</h3>
+            <div class="items-list">
+                <div class="item" id="item1" draggable="true" ondragstart="drag(event)">
+                    <h3 class="name" id="MainCourse">Hyderabad Chicken Biryani</h3>
+                    <h3 class="price" value="275">275/-</h3>
+                    <h3 class="course">Main Course</h3>
+                </div>
+    
+                <div class="item" id="item2" draggable="true" ondragstart="drag(event)">
+                    <h3 class="name" id="MainCourse">Mutton Biryani</h3>
+                    <h3 class="price" value="275">275/-</h3>
+                    <h3 class="course">Main Course</h3>
+                </div>
+    
+                <div class="item" id="item3" draggable="true" ondragstart="drag(event)">
+                    <h3 class="name" id="MainCourse">Keema Biryani</h3>
+                    <h3 class="price" value="275">275/-</h3>
+                    <h3 class="course">Main Course</h3>
+                </div>
+    
+                <div class="item" id="item4" draggable="true" ondragstart="drag(event)">
+                    <h3 class="name" id="MainCourse">Makhni Paneer Biryani</h3>
+                    <h3 class="price" value="275">275/-</h3>
+                    <h3 class="course">Main Course</h3>
+                </div>
+    
+                <div class="item" id="item5" draggable="true" ondragstart="drag(event)">
+                    <h3 class="name" id="MainCourse">Calicut Chicken Biryani</h3>
+                    <h3 class="price" value="275">275/-</h3>
+                    <h3 class="course">Main Course</h3>
+                </div>
+    
+                <div class="item" id="item6" draggable="true" ondragstart="drag(event)">
+                    <h3 class="name" id="dessert">Gulab Jamun</h3>
+                    <h3 class="price" value="150">150/-</h3>
+                    <h3 class="course">Dessert</h3>
+                </div>
+    
+                <div class="item" id="item7" draggable="true" ondragstart="drag(event)">
+                    <h3 class="name" id="dessert">Kheer</h3>
+                    <h3 class="price" value="160">160/-</h3>
+                    <h3 class="course">Dessert</h3>
+                </div>
+    
+                <div class="item" id="item8" draggable="true" ondragstart="drag(event)">
+                    <h3 class="name" id="dessert">Jalebi</h3>
+                    <h3 class="price" value="50">50/-</h3>
+                    <h3 class="course">Dessert</h3>
+                </div>
+    
+                <div class="item" id="item9" draggable="true" ondragstart="drag(event)">
+                    <h3 class="name" id="entree">Samosa</h3>
+                    <h3 class="price" value="50">50/-</h3>
+                    <h3 class="course">Entree</h3>
+                </div>
+    
+                <div class="item" id="item10" draggable="true" ondragstart="drag(event)">
+                    <h3 class="name" id="entree">Grilled Chicken</h3>
+                    <h3 class="price" value="150">150/-</h3>
+                    <h3 class="course">Entree</h3>
+                </div>
+    
+                <div class="item" id="item11" draggable="true" ondragstart="drag(event)">
+                    <h3 class="name" id="appetizer">Apple Cheese Wraps</h3>
+                    <h3 class="price" value="150">150/-</h3>
+                    <h3 class="course">Appetizer</h3>
+                </div>
+    
+                <div class="item" id="item12" draggable="true" ondragstart="drag(event)">
+                    <h3 class="name" id="appetizer">French Fries</h3>
+                    <h3 class="price" value="150">150/-</h3>
+                    <h3 class="course">Appetizer</h3>
+                </div>
+    
+                <div class="item" id="item13" draggable="true" ondragstart="drag(event)">
+                    <h3 class="name" id="beverage">Masala Chai</h3>
+                    <h3 class="price" value="30">30/-</h3>
+                    <h3 class="course">Beverage</h3>
+                </div>
+    
+                <div class="item" id="item14" draggable="true" ondragstart="drag(event)">
+                    <h3 class="name" id="beverage">Orange Juice</h3>
+                    <h3 class="price" value="50">50/-</h3>
+                    <h3 class="course">Beverage</h3>
+                </div>
+    
+                <div class="item" id="item15" draggable="true" ondragstart="drag(event)">
+                    <h3 class="name" id="beverage">Coke</h3>
+                    <h3 class="price" value="30">30/-</h3>
+                    <h3 class="course">Beverage</h3>
+                </div>
             </div>
-
-            <div class="item" id="item4" draggable="true" ondragstart="drag(event)">
-                <h3 class="name" id="MainCourse">Makhni Paneer Biryani</h3>
-                <h3 class="price" value="275">275/-</h3>
-                <h3 class="course">Main Course</h3>
-            </div>
-
-            <div class="item" id="item5" draggable="true" ondragstart="drag(event)">
-                <h3 class="name" id="MainCourse">Calicut Chicken Biryani</h3>
-                <h3 class="price" value="275">275/-</h3>
-                <h3 class="course">Main Course</h3>
-            </div>
-
-            <div class="item" id="item6" draggable="true" ondragstart="drag(event)">
-                <h3 class="name" id="dessert">Gulab Jamun</h3>
-                <h3 class="price" value="150">150/-</h3>
-                <h3 class="course">Dessert</h3>
-            </div>
-
-            <div class="item" id="item7" draggable="true" ondragstart="drag(event)">
-                <h3 class="name" id="dessert">Kheer</h3>
-                <h3 class="price" value="160">160/-</h3>
-                <h3 class="course">Dessert</h3>
-            </div>
-
-            <div class="item" id="item8" draggable="true" ondragstart="drag(event)">
-                <h3 class="name" id="dessert">Jalebi</h3>
-                <h3 class="price" value="50">50/-</h3>
-                <h3 class="course">Dessert</h3>
-            </div>
-
-            <div class="item" id="item9" draggable="true" ondragstart="drag(event)">
-                <h3 class="name" id="entree">Samosa</h3>
-                <h3 class="price" value="50">50/-</h3>
-                <h3 class="course">Entree</h3>
-            </div>
-
-            <div class="item" id="item10" draggable="true" ondragstart="drag(event)">
-                <h3 class="name" id="entree">Grilled Chicken</h3>
-                <h3 class="price" value="150">150/-</h3>
-                <h3 class="course">Entree</h3>
-            </div>
-
-            <div class="item" id="item11" draggable="true" ondragstart="drag(event)">
-                <h3 class="name" id="appetizer">Apple Cheese Wraps</h3>
-                <h3 class="price" value="150">150/-</h3>
-                <h3 class="course">Appetizer</h3>
-            </div>
-
-            <div class="item" id="item12" draggable="true" ondragstart="drag(event)">
-                <h3 class="name" id="appetizer">French Fries</h3>
-                <h3 class="price" value="150">150/-</h3>
-                <h3 class="course">Appetizer</h3>
-            </div>
-
-            <div class="item" id="item13" draggable="true" ondragstart="drag(event)">
-                <h3 class="name" id="beverage">Masala Chai</h3>
-                <h3 class="price" value="30">30/-</h3>
-                <h3 class="course">Beverage</h3>
-            </div>
-
-            <div class="item" id="item14" draggable="true" ondragstart="drag(event)">
-                <h3 class="name" id="beverage">Orange Juice</h3>
-                <h3 class="price" value="50">50/-</h3>
-                <h3 class="course">Beverage</h3>
-            </div>
-
-            <div class="item" id="item15" draggable="true" ondragstart="drag(event)">
-                <h3 class="name" id="beverage">Coke</h3>
-                <h3 class="price" value="30">30/-</h3>
-                <h3 class="course">Beverage</h3>
-            </div>
-
         </div>
-    </div>
-
-    <div class="bills">
-
     </div>
     
     <div class="table-details">
         <div class="content">
-            <span class="close" onclick="closeTable(event)">&times;</span>
+            <span class="close" onclick="closeTable()">&times;</span>
             <strong>Table - <span id="table-id"></span> | Order Details</strong>
 
             <br><br><br>
@@ -206,6 +220,43 @@
 
             <h3 id="done">Bill is generated!</h3>
         </div> 
+    </div>
+
+    <div class="bills">
+        <div class="content">
+            <span class="close" onclick="closeBill(event)">&times;</span>
+            <strong id="billsHeading">Bills</strong>
+            <br><br><br>
+            <div class="innerBills">
+                <table id="bils-table">
+                    <colgroup>
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 15%;">
+                        <col span="1" style="width: 15%;">
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 30%;">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>S.No.</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Table</th>
+                            <th>Total Items</th>
+                            <th>Total Price</th>
+                            <th>Items</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="main-bills">  
+                    </tbody>
+
+                    <tfoot></tfoot>
+                </table>
+            </div>
+        </div>
     </div>
 
     <script src="./scripts/index.js"></script>
