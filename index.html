@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <h1 class="title">ZEMOSO LABS RESTAURANT</h1>
+    <h1 class="main-title">ZEMOSO LABS RESTAURANT</h1>
 
     <div class="container">
 
@@ -172,10 +172,12 @@
     
     <div class="table-details">
         <div class="content">
-            <span class="close" onclick="closeTable()">&times;</span>
-            <strong>Table - <span id="table-id"></span> | Order Details</strong>
+            <div class="title-heading">
+                <span class="close" onclick="closeTable()">&times;</span>
+                <strong>Table - <span id="table-id"></span> | Order Details</strong>
+            </div>
 
-            <br><br><br>
+            <br>
             <div class="orders">
                 <table id="orders-table">
                     <colgroup>
@@ -214,8 +216,8 @@
                 </strong>
 
                 <h3>Are you sure?</h3>
-                <input type="button" value="Yes" onclick="confirmBill(event)">
-                <input type="button" value="No" onclick="confirmBill(event)">
+                <input type="button" value="Yes" id="confirmButton" onclick="confirmBill(event)">
+                <input type="button" value="No" id="confirmButton" onclick="confirmBill(event)">
             </section>
 
             <h3 id="done">Bill is generated!</h3>
@@ -224,9 +226,11 @@
 
     <div class="bills">
         <div class="content">
-            <span class="close" onclick="closeBill(event)">&times;</span>
-            <strong id="billsHeading">Bills</strong>
-            <br><br><br>
+            <div class="title-heading">
+                <span class="close" onclick="closeBill(event)">&times;</span>
+                <strong id="billsHeading">Bills</strong>
+            </div>
+            <br>
             <div class="innerBills">
                 <table id="bils-table">
                     <colgroup>

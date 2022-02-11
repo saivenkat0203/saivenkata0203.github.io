@@ -187,7 +187,7 @@ function computeTable(table_id) {
         inputTag.value = orders[table_id][i]["quantity"];
         inputTag.min = "1";
         inputTag.style.width = "90%";
-        
+        inputTag.style.backgroundColor = "rgb(144, 235, 206)";
         newCol.appendChild(inputTag);
 
         inputTag.addEventListener("input", function() {
@@ -212,6 +212,7 @@ function computeTable(table_id) {
         newCol = newRow.insertCell();
         let removeButton = document.createElement("button");
         removeButton.id = "removeItem";
+        removeButton.style.backgroundColor = "rgb(144, 235, 206)";
         
         let bin = document.createElement("i");
         bin.className = "fa fa-trash";
